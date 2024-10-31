@@ -1,0 +1,36 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js",
+    "seed:primary": "npx knex seed:run --specific=users.js && npx knex seed:run --specific=Requests.js && npx knex seed:run --specific=services.js",
+    "seed:remaining": " npx knex seed:run --specific=provider_schedules.js ",
+    "seed:all": "npm run seed:primary && npm run seed:remaining",
+    "migrate:users": "npx knex migrate:up 20240910133656_users.js",
+    "migrate:Requests": "npx knex migrate:up 20240914154642_Requests.js",
+    "migrate:services": "npx knex migrate:up 20240928165838_services.js",
+    "migrate:provider_schedules": "npx knex migrate:up 20240928183752_provider_schedules.js",
+    "migrate:bookings": "npx knex migrate:up 20240928170536_bookings.js",
+    "migrate:all": "npm run migrate:users && npm run migrate:Requests && npm run migrate:services && npm run migrate:provider_schedules && npm run migrate:bookings"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "knex": "^3.1.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^3.1.7",
+    "pg": "^8.13.1",
+    "pg-hstore": "^2.3.4"
+  }
+}
